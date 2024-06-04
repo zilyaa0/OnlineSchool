@@ -1,0 +1,9 @@
+﻿@model OnlineSchool.Data.Models.Course
+
+<div class="col-lg-4" id="cards">
+    <img class="img" src="@Model.img" alt="@Model.name" />
+    <h5>@Model.name</h5>
+    <p>@Model.shortDesc</p>
+    <p>Стоимость: @Model.price.ToString("c")</p>
+    <p><a class="btn btn-info" asp-controller="Cards" asp-action="Card" asp-route-id="@Model.id">Подробнее</a></p>
+</div>

@@ -1,0 +1,18 @@
+﻿@model List<Course>
+<div>
+    <h3 class="text-dark text-center">Выбирай курсы и получай навыки в</h3>
+    <h1 class="text-info text-center fs-1">InfoЗнания</h1>
+    <div class="row mt-5 mb-5">
+        
+            @foreach (var course in Model)
+            {
+                <div class="col-lg-4" id="cards">
+                    <img class="img" src="@course.img" alt="@course.name" />
+                    <h5>@course.name</h5>
+                    <p>@course.shortDesc</p>
+                    <p>Стоимость: @course.price.ToString("c")</p>
+                    <p><a class="btn btn-info" asp-controller="Cards" asp-action="Card" asp-route-id="@course.id">Подробнее</a></p>
+                </div>
+            }
+    </div>
+</div>

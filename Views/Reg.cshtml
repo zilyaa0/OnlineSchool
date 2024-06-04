@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Регистрация";
+}
+
+@if (ViewBag.Error != null)
+{
+<div class="alert alert-danger" role="alert">
+    @ViewBag.Error
+</div>
+}
+
+    <div class="form-signin">
+        <form method="post" action="~/Registration">
+            <h1 class="h3 mb-3 fw-normal">Регистрация аккаунта</h1>
+            <div class="form-floating">
+                <input type="text" class="form-control" name="FirstName" id="floatingInput" placeholder="Имя">
+                <label for="floatingInput">Имя</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" name="SecondName" id="floatingInput" placeholder="Фамилия">
+                <label for="floatingInput">Фамилия</label>
+            </div>
+            <div class="form-floating">
+                <input type="email" class="form-control" name="Email" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" name="Password" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+    

@@ -1,0 +1,20 @@
+﻿@model Course
+<form asp-controller="Cards" asp-action="Reserve">
+<div class="card mb-3 ml-5 mr-5" style="max-width:stretch; height:350px">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="@Model.img" style="height:350px" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">@Model.name</h5>
+                <p class="card-text">@Model.longDesc</p>
+                <p class="card-text">Длительнось: @Model.duration месяцев</p>
+                <p class="card-text">Стоимость: @Model.price.ToString("c")</p>
+                <input hidden name="courseid" value="@Model.id" />
+                <input type="submit" class="btn btn-info" value="Начать изучение"/>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

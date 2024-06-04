@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Личный кабинет";
+}
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.Error
+    </div>
+}
+<div class="text-center">
+<div class="col-md-10">
+    <div class="card mb-3">
+        <div class="card-body">
+            <form method="post" action="~/Profile/Edit">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Имя</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input class="form-control" type="text" name="Name" placeholder="Имя" value="@ViewBag.client.Name" />
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Фамилия</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <input class="form-control" type="text" name="Surname" placeholder="Имя" value="@ViewBag.client.Surname" />
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Email</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    @ViewBag.client.Email
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="submit" class="btn btn-info" value="Редактировать данные"></input>
+                </div>
+            </div>
+            </form>
+            <br/>
+            <form method="post" action="~/Profile/Delete">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="submit" class="btn btn-info" value="Удалить аккаунт"></input>
+                    </div>
+                </div>
+            </form>
+            <br/>
+                <form method="post" action="~/Profile/Enter">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input type="submit" class="btn btn-info" value="Выйти аккаунта"></input>
+                        </div>
+                    </div>
+                </form>
+        </div>
+        @if (ViewBag.empty == 0)
+        {
+        @foreach (var course in ViewBag.courses)
+        {
+            <div class="card mb-3 ml-5 mr-5" style="max-width:stretch; height:150px">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="@course.img" style="height:130px" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@course.name</h5>
+                            <p class="card-text">@course.shortDesc</p>
+                            <a class="btn btn-info" asp-controller="Profile" asp-action="ReadDoc" asp-route-id="@course.id">Изучать</a>
+                            <a class="btn btn-info" asp-controller="Profile" asp-action="DeleteCourse" asp-route-id="@course.id">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        }
+        else
+        {
+            <h2>Вы не начали проходить обучение<br />Выберите курс и вливайтесть в мир IT</h2>
+        }
+    </div>
+</div>
+</div>
+
